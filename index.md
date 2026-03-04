@@ -109,7 +109,7 @@ Use of AI coding assistants **is permitted**. However, you should explicitly att
 >   - <a href="papers/lecture-01-readings-2-Human_Language_Understanding_and_Reasoning-2022.pdf" target="_blank" rel="noopener">Human Language Understanding and Reasoning</a>
 >   - <a href="papers/lecture-01-readings-3-Scaling_Laws_with_Vocabulary-2024.pdf" target="_blank" rel="noopener">Scaling Laws with Vocabulary (2407.13623v1)</a>
 >   - <a href="papers/lecture-01-readings-4-Getting_the_most_out_of_your_tokenizer_for_pre-training-2024.pdf" target="_blank" rel="noopener">Getting the most out of your tokenizer for pre-training</a>
-> - **Excercise: [lecture-01-exercise-tokenization.ipynb](https://github.com/baojian/llm-26/blob/main/lecture-01-tokenization/lecture-01-exercise-tokenization.ipynb)**
+> - **Excercise: <a href="https://github.com/baojian/llm-26/blob/main/lecture-01-tokenization/lecture-01-exercise-tokenization.ipynb" target="_blank" rel="noopener">lecture-01-exercise-tokenization.ipynb</a>**
 
 **Release Assignment 1**
 
