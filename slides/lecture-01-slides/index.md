@@ -641,6 +641,15 @@
         Strategy: <b>read → implement → experiment → explain</b>
       </div>
     </div>
+    <div style="font-size:40px; line-height:1.55; margin-top:8px;">
+      <div style="font-weight:900; color:#1f4e9a;">It is all about coding</div>
+      <div style="height:5px;"></div>
+      <ul style="margin:0;">
+        <li><b>Practice</li>
+        <li><b>Practice</li>
+        <li><b>Practice</li>
+      </ul>
+    </div>
   </div>
 </section>
 

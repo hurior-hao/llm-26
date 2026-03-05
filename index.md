@@ -75,6 +75,14 @@ All standard homework assignments are completed by **Week 12**. The final month 
 
 ---
 
+## Coursework
+
+- **Participation (5%)**
+- **Exercise (15%)**
+- **Assignments (40-45%)**
+- **Final Project (35-40%)**
+
+
 ## Resources and References
 
 - **Textbook & Readings**
