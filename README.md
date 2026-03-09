@@ -1,1 +1,3 @@
-This is llm-26. Please check our website at [https://baojian.github.io/llm-26/](https://baojian.github.io/llm-26/).
+复旦大学2026春季学期
+自然语言处理与大语言模型（周宝健）
+课程仓库
