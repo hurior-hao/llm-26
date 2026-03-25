@@ -217,3 +217,7 @@ gpt-2
 **/.datasets
 datasets.zip
 **/datasets.zip
+
+# assignment datasets downloaded locally
+assignments/assignment01/enwiki-test.json
+assignments/assignment01/enwiki-train.json
