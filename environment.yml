@@ -1,5 +1,6 @@
-name: llm-26
+name: llm26
 channels:
+  - conda-forge
   - defaults
 dependencies:
   - python=3.12

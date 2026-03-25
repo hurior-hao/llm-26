@@ -1,4 +1,4 @@
-name: llm-26-gpu
+name: llm26-gpu
 channels:
   - conda-forge
   - defaults
@@ -16,6 +16,11 @@ dependencies:
   - networkx
   - psutil
   - nbconvert
+  - pytorch::pytorch
+  - pytorch::torchvision
+  - pytorch::torchaudio
+  - pytorch-cuda=12.1
+  - conda-forge::ollama
   - pip:
       - requests
       - regex

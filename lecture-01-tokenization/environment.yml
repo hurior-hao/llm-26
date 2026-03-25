@@ -1,4 +1,4 @@
-name: llm-26-cpu
+name: llm26-cpu
 channels:
   - defaults
 dependencies:

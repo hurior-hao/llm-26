@@ -1,4 +1,4 @@
-name: llm-26
+name: llm26
 channels:
   - defaults
 dependencies:
