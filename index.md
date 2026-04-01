@@ -55,7 +55,7 @@ All standard homework assignments are completed by **Week 12**. The final month 
   - **Week 9:** 1-page Project Proposal (Problem, Dataset, Baselines).
   - **Week 12:** Status Check / Preliminary Results (Presentation).
   - **Week 17:** Final Report / Code submission
-- **[Course project details](https://baojian.github.io/llm-26/final-project/index.html)**
+- **[Course project details](./final-project/index.html)**
 
 ---
 
