@@ -29,7 +29,6 @@ This course covers the foundations and modern frontiers of Natural Language Proc
 - **TAs:**
   - Binbin Huang
   - Runze Wang
-  - Coming soon
 - **Time:** 03/05/2026–06/18/2026, Thu., 1:30 pm – 4:10 pm, <a href="assets/Fudan-2026-spring-calendar.pdf" target="_blank" rel="noopener">Fudan Calendar</a>
 - **Location:** HGX104
 - **Office Hours:** 10:00 am – 1:00 pm, Wed & C611
@@ -48,16 +47,14 @@ All standard homework assignments are completed by **Week 12**. The final month 
 
 
 ### Course Project
-- **Timeline:** Weeks 13–16 (Dedicated time)
-- **Teams:** 2-3 Students.
+- **Timeline:** Weeks 10–16 (Dedicated time)
+- **Teams:** 3-5 Students (3 members are strongly recommended).
 - **Deliverables:**
+  - **Week 7:** Make your team  members ready
   - **Week 9:** 1-page Project Proposal (Problem, Dataset, Baselines).
-  - **Week 12/13:** Status Check / Preliminary Results (Presentation).
-  - **Week 16:** Final Report
-- **Tracks:**
-  - *Research:* Novel architecture, loss function, or extensive ablation study.
-  - *Application:* End-to-end tool/agent with UI (Streamlit/Gradio).
-  - *Systems:* High-performance inference engine or quantization study.
+  - **Week 12:** Status Check / Preliminary Results (Presentation).
+  - **Week 17:** Final Report / Code submission
+- **[Course project details](https://baojian.github.io/llm-26/slides/final-project/index.html)**
 
 ---
 
@@ -73,9 +70,10 @@ All standard homework assignments are completed by **Week 12**. The final month 
 
 - **Textbook & Readings**
   - [Speech and Language Processing (Jurafsky & Martin, 3rd Ed. Draft)](https://web.stanford.edu/~jurafsky/slp3/)
-  - Coming soon
+  - [Natural Language Processing: Neural Networks and Large Language Models](https://niutrans.github.io/NLPBook/)
 - **Computing & Communication**
   - **University Cluster:** [https://cfff.fudan.edu.cn/home](https://cfff.fudan.edu.cn/home)
+  - **We will use Qizhi**: [http://qz.cfff.fudan.edu.cn/](http://qz.cfff.fudan.edu.cn/)
   - **Course Repo:** [baojian/llm-26](https://github.com/baojian/llm-26)
   - **Academic Integrity:** Please check [our policies](https://baojian.github.io/llm-26/assets/Fudan-academic-integrity.pdf).
 - **AI Policy**
@@ -146,13 +144,17 @@ Use of AI coding assistants **is permitted**. However, you should explicitly att
 > - **Excercise: <a href="https://github.com/baojian/llm-26/blob/main/lecture-04-neural-lms/lecture-04-neural-lms.ipynb" target="_blank" rel="noopener">lecture-04-neural-lms.ipynb</a>**
 
 
-### Week 5 Attention Mechanisms
+### Week 5 Attention Mechanisms and Transformer
 
-Dot-product attention, Query/Key/Value intuition
+> In this lecture, we introduce the Transformer architecture.
+> - **Slides:** <a href="https://github.com/baojian/llm-26/blob/main/slides/lecture-05-slides/index.html" target="_blank" rel="noopener">Lecture 05 slides</a>
+> - **Readings:**
+>   - <a href="papers/lecture-05-readings-0-JM_Book_Chapter_7_8.pdf" target="_blank" rel="noopener">JM Book Chapter 7,8</a>
+>   - <a href="papers/lecture-05-readings-2-Decomposable-Attention-2017.pdf" target="_blank" rel="noopener">Decomposable Attention (2017)</a>
+>   - <a href="papers/lecture-05-readings-1-Transformer-paper.pdf" target="_blank" rel="noopener">Transformer (2017)</a>
+>   - <a href="papers/lecture-05-readings-3-Transformer-in-equation-2019.pdf" target="_blank" rel="noopener">Transformer in Equation (2019)</a>
+> - **Excercise: <a href="https://github.com/baojian/llm-26/blob/main/lecture-05-transformers/lecture-05-transformers.ipynb" target="_blank" rel="noopener">lecture-05-transformers.ipynb</a>**
 
-### Week 6 The Transformer Architecture
-
-Self-Attention, Multi-head, Positional Encodings, LayerNorm
 
 ### Week 7 LLM Pretraining
 
