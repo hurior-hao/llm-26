@@ -198,6 +198,10 @@ cython_debug/
 #  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
+
+# Local assignment dependencies and generated artifacts
+assignments/assignment01/kenlm-src/
+assignments/assignment01/kenlm_artifacts/
 .cursorindexingignore
 
 # Marimo
