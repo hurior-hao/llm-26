@@ -1,0 +1,18 @@
+[project]
+name = "code-gpt2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "datasets>=4.8.4",
+    "ipykernel>=7.1.0",
+    "ipywidgets>=8.1.8",
+    "jupyter>=1.1.1",
+    "jupyterlab>=4.4.10",
+    "matplotlib>=3.10.7",
+    "tiktoken>=0.12.0",
+    "torch>=2.9.0",
+    "torchinfo>=1.8.0",
+    "transformers>=4.57.1",
+]

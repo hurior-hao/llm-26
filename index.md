@@ -144,7 +144,7 @@ Use of AI coding assistants **is permitted**. However, you should explicitly att
 > - **Excercise: <a href="https://github.com/baojian/llm-26/blob/main/lecture-04-neural-lms/lecture-04-neural-lms.ipynb" target="_blank" rel="noopener">lecture-04-neural-lms.ipynb</a>**
 
 
-### Week 5 Attention Mechanisms and Transformer
+### Week 5 & 6 Attention Mechanisms and Transformer
 
 > In this lecture, we introduce the Transformer architecture.
 > - **Slides:** <a href="https://github.com/baojian/llm-26/blob/main/slides/lecture-05-slides/index.html" target="_blank" rel="noopener">Lecture 05 slides</a>
@@ -156,23 +156,46 @@ Use of AI coding assistants **is permitted**. However, you should explicitly att
 > - **Excercise: <a href="https://github.com/baojian/llm-26/blob/main/lecture-05-transformers/lecture-05-transformers.ipynb" target="_blank" rel="noopener">lecture-05-transformers.ipynb</a>**
 
 
-### Week 7 LLM Pretraining
+### Week 7 LLM Pretraining (GPT)
 
-Causal LM vs MLM, Chinchilla Scaling Laws, Data Mixtures
 
-### Week 8 Fine-tuning & PEFT
+> In this lecture, we introduce tpyical pretrained LLMs such as GPT-series.
+> - **Slides:** <a href="https://github.com/baojian/llm-26/blob/main/slides/lecture-06-slides/index.html" target="_blank" rel="noopener">Lecture 06 slides</a>
+> - **Readings:**
+>   - <a href="papers/lecture-06-readings-0-JM_Book_Chapter_7.pdf" target="_blank" rel="noopener">JM Book Chapter 7</a>
+>   - <a href="papers/lecture-06-readings-1-GPT1.pdf" target="_blank" rel="noopener">GPT1 (2018)</a>
+>   - <a href="papers/lecture-06-readings-2-GPT2.pdf" target="_blank" rel="noopener">GPT2 (2019)</a>
+>   - <a href="papers/lecture-06-readings-3-GPT3.pdf" target="_blank" rel="noopener">GPT3 (2020)</a>
+>   - <a href="papers/lecture-06-readings-4-GPT4.pdf" target="_blank" rel="noopener">GPT4 (2023)</a>
+>   - <a href="papers/lecture-06-readings-5-GPT5.pdf" target="_blank" rel="noopener">GPT5 (2025)</a>
+> - **Excercise: <a href="https://github.com/baojian/llm-26/blob/main/lecture-06-gpts/lecture-06-gpts.ipynb" target="_blank" rel="noopener">lecture-06-gpts.ipynb</a>**
 
-SFT, LoRA/QLoRA, Adapters, Instruction Tuning
+
+### Week 8 Evaluations and Benchmarks
+
+> In this lecture, we introduce evaluation datasets and tasks for LLMs.
+> - **Slides:** <a href="https://github.com/baojian/llm-26/blob/main/slides/lecture-07-slides/index.html" target="_blank" rel="noopener">Lecture 07 slides</a>
+> - **Readings:**
+>   - <a href="papers/lecture-06-readings-0-JM_Book_Chapter_7.pdf" target="_blank" rel="noopener">JM Book Chapter 7</a>
+>   - <a href="papers/lecture-07-readings-7-swag.pdf" target="_blank" rel="noopener">Large-Scale Adversarial Dataset (SWAG) (2018)</a>
+>   - <a href="papers/lecture-07-readings-2-coqa.pdf" target="_blank" rel="noopener">Conversational QA (CoQA) (2018)</a>
+>   - <a href="papers/lecture-07-readings-3-glue.pdf" target="_blank" rel="noopener">General Language Understanding Evaluation benchmark (GLUE) (2018)</a>
+>   - <a href="papers/lecture-07-readings-6-superglue.pdf" target="_blank" rel="noopener">Supper GLUE (2019)</a>
+>   - <a href="papers/lecture-07-readings-4-hellaswag.pdf" target="_blank" rel="noopener">HellaSwag Dataset (2019)</a>
+>   - <a href="papers/lecture-07-readings-5-mmlu.pdf" target="_blank" rel="noopener">Measuring Massive Multitask Language Understanding (MMLU) (2020)</a>
+>   - <a href="papers/lecture-07-readings-1-benchmarks-survey.pdf" target="_blank" rel="noopener">Benchmarks Survey (2025)</a>
+> - **Excercise: <a href="https://github.com/baojian/llm-26/blob/main/lecture-07-benchmarks/lecture-07-benchmarks.ipynb" target="_blank" rel="noopener">lecture-07-benchmarks.ipynb</a>**
+
 
 **Project Proposal Due**
 
-### Week 10 Evaluation
+### Week 9 BERT
 
 Benchmarks (MMLU/GSM8K), Contamination, LLM-as-a-judge
 
-### Week 11 Prompt Engineering
+### Week 10 Post-training
 
-In-context learning, Chain-of-Thought, Prompt sensitivity 
+### Week 11 Prompt Engineering
 
 ### Week 12 Course Project Presentation
 
