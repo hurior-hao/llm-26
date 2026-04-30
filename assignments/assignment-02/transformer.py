@@ -9,6 +9,7 @@ from torch import optim
 import matplotlib.pyplot as plt
 from typing import List
 from utils import *
+import os
 
 
 class CausalSelfAttention(nn.Module):
@@ -90,7 +91,7 @@ class LetterCountingExample(object):
 # a single layer of the Transformer; this Module will take the raw words as input and do all of the steps necessary
 # to return distributions over the labels (0, 1, or 2).
 class Transformer(nn.Module):
-    def __init__(self, vocab_size, num_positions, d_model, d_internal, num_classes, num_layers):
+    def __init__(self, vocab_size, num_positions, d_model, d_internal, num_classes, num_layers,casual=True):
         """
         :param vocab_size: vocabulary size of the embedding layer
         :param num_positions: max sequence length that will be fed to the model; should be 20
@@ -103,7 +104,7 @@ class Transformer(nn.Module):
         self.embedding = nn.Embedding(vocab_size, d_model)
         self.positional_encoding = PositionalEncoding(d_model, num_positions)
         self.layers = nn.ModuleList([
-            TransformerLayer(d_model, d_internal)
+            TransformerLayer(d_model, d_internal,casual)
             for _ in range(num_layers)
         ])
         self.output_layer = nn.Linear(d_model, num_classes)
@@ -134,7 +135,7 @@ class Transformer(nn.Module):
 # Your implementation of the Transformer layer goes here. It should take vectors and return the same number of vectors
 # of the same length, applying self-attention, the feedforward layer, etc.
 class TransformerLayer(nn.Module):
-    def __init__(self, d_model, d_internal):
+    def __init__(self, d_model, d_internal,casual=True):
         """
         :param d_model: The dimension of the inputs and outputs of the layer (note that the inputs and outputs
         have to be the same size for the residual connection to work)
@@ -156,6 +157,8 @@ class TransformerLayer(nn.Module):
         self.norm2=nn.LayerNorm(d_model)
         self.scale=d_internal**0.5
         
+        self.casual=casual
+        
         
 
     def forward(self, input_vecs):
@@ -169,12 +172,13 @@ class TransformerLayer(nn.Module):
         K=self.WK(input_vecs)
         V=self.WV(input_vecs)
         scores=torch.matmul(Q,K.transpose(0,1))/self.scale
-        seq_len = input_vecs.size(0)
-        future_mask = torch.triu(
-            torch.ones(seq_len, seq_len, dtype=torch.bool, device=input_vecs.device),
-            diagonal=1
-        )
-        scores=scores.masked_fill(future_mask,-1e9)
+        if self.casual:
+            seq_len = input_vecs.size(0)
+            future_mask = torch.triu(
+                torch.ones(seq_len, seq_len, dtype=torch.bool, device=input_vecs.device),
+                diagonal=1
+            )
+            scores=scores.masked_fill(future_mask,-1e9)
         
         A=torch.softmax(scores,dim=-1)
         
@@ -231,7 +235,8 @@ def train_classifier(args, train, dev):
         d_model=64,
         d_internal=32,
         num_classes=3,
-        num_layers=2
+        num_layers=2,
+        casual=(args.task == "BEFORE")
     )
 
     optimizer = optim.Adam(model.parameters(), lr=1e-3)
