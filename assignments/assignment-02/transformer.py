@@ -100,7 +100,14 @@ class Transformer(nn.Module):
         :param num_layers: number of TransformerLayers to use; can be whatever you want
         """
         super().__init__()
-        raise Exception("Implement me")
+        self.embedding = nn.Embedding(vocab_size, d_model)
+        self.positional_encoding = PositionalEncoding(d_model, num_positions)
+        self.layers = nn.ModuleList([
+            TransformerLayer(d_model, d_internal)
+            for _ in range(num_layers)
+        ])
+        self.output_layer = nn.Linear(d_model, num_classes)
+
 
     def forward(self, indices):
         """
@@ -109,7 +116,19 @@ class Transformer(nn.Module):
         :return: A tuple of the softmax log probabilities (should be a 20x3 matrix) and a list of the attention
         maps you use in your layers (can be variable length, but each should be a 20x20 matrix)
         """
-        raise Exception("Implement me")
+        x=self.embedding(indices)
+        x=self.positional_encoding(x)
+        
+        A=[]
+        for layer in self.layers:
+            x,attnmap=layer(x)
+            A.append(attnmap)
+            
+        logits=self.output_layer(x)
+        log_probs=torch.log_softmax(logits,dim=-1)
+        
+        return log_probs,A
+        
 
 
 # Your implementation of the Transformer layer goes here. It should take vectors and return the same number of vectors
@@ -123,7 +142,21 @@ class TransformerLayer(nn.Module):
         should both be of this length.
         """
         super().__init__()
-        raise Exception("Implement me")
+        self.WQ=nn.Linear(d_model,d_internal)
+        self.WK=nn.Linear(d_model,d_internal)
+        self.WV=nn.Linear(d_model,d_model)
+        self.norm1=nn.LayerNorm(d_model)
+        
+        self.mlp=nn.Sequential(
+            nn.Linear(d_model,4*d_model),
+            nn.ReLU(),
+            nn.Linear(4*d_model,d_model)
+        )
+        
+        self.norm2=nn.LayerNorm(d_model)
+        self.scale=d_internal**0.5
+        
+        
 
     def forward(self, input_vecs):
         """
@@ -132,8 +165,24 @@ class TransformerLayer(nn.Module):
             - a tensor of shape [seq len, d_model] representing the log probabilities of each position in the input
             - a tensor of shape [seq len, seq len], representing the attention map for this layer
         """
-        raise Exception("Implement me")
-
+        Q=self.WQ(input_vecs)
+        K=self.WK(input_vecs)
+        V=self.WV(input_vecs)
+        scores=torch.matmul(Q,K.transpose(0,1))/self.scale
+        seq_len = input_vecs.size(0)
+        future_mask = torch.triu(
+            torch.ones(seq_len, seq_len, dtype=torch.bool, device=input_vecs.device),
+            diagonal=1
+        )
+        scores=scores.masked_fill(future_mask,-1e9)
+        
+        A=torch.softmax(scores,dim=-1)
+        
+        output=torch.matmul(A,V)
+        output=self.norm1(input_vecs+output)
+        output=self.norm2(output+self.mlp(output))
+        
+        return output,A
 
 # Implementation of positional encoding that you can use in your network
 class PositionalEncoding(nn.Module):
@@ -170,29 +219,47 @@ class PositionalEncoding(nn.Module):
 
 # This is a skeleton for train_classifier: you can implement this however you want
 def train_classifier(args, train, dev):
-    raise Exception("Not fully implemented yet")
+    vocab_size = 27
+    if len(train) > 0:
+        vocab_size = max(vocab_size, max([int(torch.max(ex.input_tensor)) for ex in train]) + 1)
 
-    # The following code DOES NOT WORK but can be a starting point for your implementation
-    # Some suggested snippets to use:
-    model = Transformer(...)
-    model.zero_grad()
-    model.train()
-    optimizer = optim.Adam(model.parameters(), lr=1e-4)
+    num_positions = 20 if len(train) == 0 else len(train[0].input_tensor)
+
+    model = Transformer(
+        vocab_size=vocab_size,
+        num_positions=num_positions,
+        d_model=64,
+        d_internal=32,
+        num_classes=3,
+        num_layers=2
+    )
+
+    optimizer = optim.Adam(model.parameters(), lr=1e-3)
+    loss_fcn = nn.NLLLoss()
 
     num_epochs = 10
     for t in range(0, num_epochs):
+        model.train()
         loss_this_epoch = 0.0
+
         random.seed(t)
-        # You can use batching if you'd like
         ex_idxs = [i for i in range(0, len(train))]
         random.shuffle(ex_idxs)
-        loss_fcn = nn.NLLLoss()
+
         for ex_idx in ex_idxs:
-            loss = loss_fcn(...) # TODO: Run forward and compute loss
-            # model.zero_grad()
-            # loss.backward()
-            # optimizer.step()
+            ex = train[ex_idx]
+
+            log_probs, _ = model.forward(ex.input_tensor)
+            loss = loss_fcn(log_probs, ex.output_tensor)
+
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
             loss_this_epoch += loss.item()
+
+        print("epoch %i loss: %f" % (t, loss_this_epoch))
+
     model.eval()
     return model
 
@@ -237,3 +304,4 @@ def decode(model: Transformer, dev_examples: List[LetterCountingExample], do_pri
         num_correct += acc
         num_total += len(predictions)
     print("Accuracy: %i / %i = %f" % (num_correct, num_total, float(num_correct) / num_total))
+
